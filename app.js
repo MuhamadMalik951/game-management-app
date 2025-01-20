@@ -1,7 +1,7 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
-import indexRouter from './Routes/indexRouter.js';
+import dashboardRouter from './Routes/dashboardRouter.js';
 import gameRouter from './Routes/gameRouter.js';
 import developerRouter from './Routes/developerRouter.js';
 import genreRouter from './Routes/genreRouter.js';
@@ -17,7 +17,7 @@ app.use(express.static(assetsPath));
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use('/', indexRouter);
+app.use('/', dashboardRouter);
 app.use('/games', gameRouter);
 app.use('/developers', developerRouter);
 app.use('/genres', genreRouter);
