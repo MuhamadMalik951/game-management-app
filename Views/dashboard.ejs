@@ -18,13 +18,12 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container content">
       <h1 class="title">Game Management Dashboard</h1>
       <div class="cards">
         <div class="card">
           <h3>Total Games</h3>
-          <p>Manage all the games in the system and rearrange them.
-          </p>
+          <p>Manage all the games in the system and rearrange them.</p>
           <a href="#" class="button">View Games</a>
         </div>
         <div class="card">
@@ -37,6 +36,38 @@
           <p>Generate and view reports on game performance.</p>
           <a href="#" class="button">View Reports</a>
         </div>
+      </div>
+
+      <div class="games-section">
+        <h2>Genres</h2>
+        <ul class="games-list">
+          <% genres.forEach(genre => { %>
+          <li class="game-item">
+            <h4><%= genre.name %></h4>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+      <div class="games-section">
+        <h2>Developers</h2>
+        <ul class="games-list">
+          <% developers.forEach(dev => { %>
+          <li class="game-item">
+            <h4><%= dev.name %></h4>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+      <div class="games-section">
+        <h2>Games</h2>
+        <ul class="games-list">
+          <% games.forEach(game => { %>
+          <li class="game-item">
+            <h4><%= game.name %></h4>
+            <p>Genre: <%= game.genre %></p>
+          </li>
+          <% }); %>
+        </ul>
       </div>
     </div>
 

@@ -40,13 +40,15 @@ const insertQuery = `INSERT INTO games (name, genre, developer_id) VALUES ('Fort
 // await pool.query(insertQuery);
 // await pool.query(`DELETE FROM games WHERE id = 13`);
 const games = await pool.query(`SELECT * FROM games`);
-console.log(games.rows);
+// console.log(games.rows);
 const dev = await pool.query(`SELECT * FROM developers`);
-console.log(dev.rows);
+// console.log(dev.rows);
 
 const queryRows = await pool.query(
   `SELECT games.genre AS genre, games.name AS game_title, developers.name AS developer_name FROM games JOIN developers ON developers.id = games.developer_id`
 );
-console.log(queryRows.rows);
+// console.log(queryRows.rows);
+
 // pool.query(`DROP TABLE games`);
-export default pool;
+const query = (query, params) => pool.query(query, params);
+export default query;

@@ -17,6 +17,10 @@ body {
   align-items: center;
 }
 
+.container {
+  padding: 20px;
+
+}
 .navbar-brand {
   font-size: 1.5em;
   text-decoration: none;
@@ -40,8 +44,11 @@ body {
   padding: 5px 10px;
 }
 
-.container {
+.content {
   padding: 20px;
+  /* overflow-y: scroll; */
+  min-height: 100vh;
+
 }
 
 .title {
@@ -79,8 +86,31 @@ body {
   padding: 20px;
   background-color: #333;
   color: white;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  
+}
+
+/* styles.css */
+.games-section {
+  margin-top: 20px;
+}
+
+.games-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.game-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.game-item h4 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.game-item p {
+  margin: 5px 0 0;
+  color: #555;
 }
