@@ -1,15 +1,18 @@
-import getAllDevelopers from '../models/developerModel.js';
-import getAllGames from '../models/gameModel.js';
-import getAllGenres from '../models/genreModel.js';
+import getAllDevelopers, { getTotalDevelopers } from '../models/developerModel.js';
+import getAllGames, { getTotalGames } from '../models/gameModel.js';
+import getAllGenres, { getTotalGenres } from '../models/genreModel.js';
 const renderDashboard = async (req, res) => {
   const games = await getAllGames();
+  const totalGames = await getTotalGames();
   const developers = await getAllDevelopers();
+  const totalDevelopers = await getTotalDevelopers();
   const genres = await getAllGenres();
-  console.log(genres);
+  const totalGenres = await getTotalGenres();
+  console.log(totalGenres);
   res.render('dashboard', {
-    games: games,
-    developers: developers,
-    genres: genres,
+    games: totalGames,
+    developers: totalDevelopers,
+    genres: totalGenres,
   });
 };
 export default renderDashboard;

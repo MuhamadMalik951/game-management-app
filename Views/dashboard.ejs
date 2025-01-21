@@ -24,53 +24,25 @@
         <div class="card">
           <h3>Total Games</h3>
           <p>Manage all the games in the system and rearrange them.</p>
-          <a href="#" class="button">View Games</a>
+          <h4><%= games %></h4>
+          <a href="/games" class="button">View Games</a>
         </div>
         <div class="card">
           <h3>Total Developers</h3>
           <p>Manage all the developers associated with games.</p>
-          <a href="#" class="button">View Developers</a>
+          <h4><%= developers%></h4>
+          <a href="/developers" class="button">View Developers</a>
         </div>
         <div class="card">
-          <h3>Reports</h3>
-          <p>Generate and view reports on game performance.</p>
-          <a href="#" class="button">View Reports</a>
+          <h3>Total Genres</h3>
+          <p>Manage all the genres for the games.</p>
+          <h4><%= genres %></h4>
+          <a href="/genres" class="button">View Genres</a>
         </div>
       </div>
-
-      <div class="games-section">
-        <h2>Genres</h2>
-        <ul class="games-list">
-          <% genres.forEach(genre => { %>
-          <li class="game-item">
-            <h4><%= genre.name %></h4>
-          </li>
-          <% }); %>
-        </ul>
-      </div>
-      <div class="games-section">
-        <h2>Developers</h2>
-        <ul class="games-list">
-          <% developers.forEach(dev => { %>
-          <li class="game-item">
-            <h4><%= dev.name %></h4>
-          </li>
-          <% }); %>
-        </ul>
-      </div>
-      <div class="games-section">
-        <h2>Games</h2>
-        <ul class="games-list">
-          <% games.forEach(game => { %>
-          <li class="game-item">
-            <h4><%= game.name %></h4>
-            <p>Genre: <%= game.genre %></p>
-          </li>
-          <% }); %>
         </ul>
       </div>
     </div>
-
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>

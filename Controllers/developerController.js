@@ -1,5 +1,8 @@
-const renderDeveloper = (req, res) => {
-    res.render('developer')
-}
+import getAllDevelopers from '../models/developerModel.js';
 
-export default renderDeveloper
+const renderDeveloper = async (req, res) => {
+  const developers = await getAllDevelopers();
+  res.render('developer', { developers: developers });
+};
+
+export default renderDeveloper;
