@@ -47,7 +47,7 @@
                 <p class="game-title"><%= dev.name %></p>
                 <p class="game-details">Bio: <%= dev.bio %></p>
                 <p class="game-details">Games Developed: <%= dev.games_developed %></p>
-                <p class="game-details">Games: <%= dev.games %></p>
+                <p class="game-details">Games: <%= dev.games ? dev.games : 'None' %></p>
             </div>
         <% }); %>
     </div>

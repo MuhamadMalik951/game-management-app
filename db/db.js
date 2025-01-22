@@ -52,7 +52,7 @@ const pool = new Pool({
 
 // const insertQuery = `DROP TABLE genres`;
 // const insertQuery = `UPDATE developers SET bio = 'Talha is a backend developer with expertise in Node.js and Python.' WHERE id = 3;
-const insertQuery = `UPDATE games SET name = 'Valorant' WHERE id = 10`;
+const insertQuery = `UPDATE developers SET name = 'Talha' WHERE name = 'talha'`;
 // const insertQuery = `ALTER TABLE games DROP COLUMN genre_id `;
 // const insertQuery = `ALTER TABLE games ADD COLUMN genre_id INT`;
 // await pool.query(insertQuery);
@@ -61,8 +61,13 @@ const genres = await pool.query(
   `SELECT genres.name AS genre_name, genres.description AS genre_description, STRING_AGG(games.name, ', ') AS games FROM genres JOIN games on genres.id = games.genre_id GROUP BY genres.name, genres.description`
 );
 // console.log(genres.rows);
-const games = await pool.query(`SELECT * FROM games`);
-// console.log(games.rows);
+const games = await pool.query(
+  `SELECT genres.name AS name FROM genres LEFT JOIN games on genres.id = games.genre_id GROUP BY genres.id`
+);
+const gamesss = await pool.query(
+  `SELECT * FROM games`
+);
+// console.log(gamesss.rows)
 const gamess =
   await pool.query(`SELECT games.name AS name, developers.name AS developer, genres.name AS genre FROM games JOIN developers ON developers.id = games.developer_id
    JOIN genres ON games.genre_id = genres.id
@@ -71,7 +76,8 @@ const gamess =
 const dev = await pool.query(
   `SELECT developers.name AS name, developers.bio, COUNT(games.name) AS games_developed ,STRING_AGG(games.name, ', ') AS games FROM developers JOIN games ON developers.id = games.developer_id GROUP BY games.developer_id, developers.name, developers.bio`
 );
-console.log(dev.rows);
+const devs = await pool.query(`SELECT * FROM developers`)
+// console.log(devs.rows)
 const queryRows = await pool.query(
   `SELECT games.name AS game_title, developers.name AS developer_name FROM games JOIN developers ON developers.id = 2`
 );

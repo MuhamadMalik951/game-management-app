@@ -46,7 +46,9 @@
       <div class="genre-card">
         <p class="genre-title"><%= genre.name %></p>
         <p class="genre-details">Description: <%= genre.description %></p>
-        <p class="genre-details">Games: <%=genre.games %></p>
+        <p class="genre-details">
+          Games: <%=genre.games ? genre.games : 'None' %>
+        </p>
       </div>
       <% }); %>
     </div>

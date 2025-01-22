@@ -12,8 +12,9 @@
         <a class="navbar-brand" href="#">Game Management</a>
         <ul class="navbar-links">
           <li><a href="/">Dashboard</a></li>
-          <li><a href="/games">Add Game</a></li>
-          <li><a href="/developers">Manage Developers</a></li>
+          <li><a href="/developers">Developers</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/genres">Genres</a></li>
         </ul>
       </div>
     </nav>
@@ -30,7 +31,7 @@
         <div class="card">
           <h3>Total Developers</h3>
           <p>Manage all the developers associated with games.</p>
-          <h4><%= developers%></h4>
+          <h4><%= developers %></h4>
           <a href="/developers" class="button">View Developers</a>
         </div>
         <div class="card">
@@ -40,9 +41,37 @@
           <a href="/genres" class="button">View Genres</a>
         </div>
       </div>
-        </ul>
+
+      <h2>Quick Actions</h2>
+      <div class="quick-actions">
+        <a href="/games/create" class="quick-action-card">
+          <div class="quick-action-icon">+</div>
+          <div class="quick-action-content">
+            <h3 class="quick-action-title">Add New Game</h3>
+            <p class="quick-action-description">
+              Add a new game to the system.
+            </p>
+          </div>
+        </a>
+        <a href="/developers/create" class="quick-action-card">
+          <div class="quick-action-icon">👤</div>
+          <div class="quick-action-content">
+            <h3 class="quick-action-title">Add New Developer</h3>
+            <p class="quick-action-description">
+              Create a new developer profile.
+            </p>
+          </div>
+        </a>
+        <a href="/genres/create" class="quick-action-card">
+          <div class="quick-action-icon">🏷️</div>
+          <div class="quick-action-content">
+            <h3 class="quick-action-title">Add New Genre</h3>
+            <p class="quick-action-description">Create a new game genre.</p>
+          </div>
+        </a>
       </div>
     </div>
+
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
