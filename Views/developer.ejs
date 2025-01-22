@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developers</title>
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .game-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .game-details {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
     <nav class="navbar">
-      <div class="container">
-        <a class="navbar-brand" href="#">Game Management</a>
-        <ul class="navbar-links">
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/developers">Developers</a></li>
-          <li><a href="/games">Games</a></li>
-          <li><a href="/genres">Genres</a></li>
-        </ul>
-      </div>
+        <div class="container">
+            <a class="navbar-brand" href="#">Game Management</a>
+            <ul class="navbar-links">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/developers">Developers</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/genres">Genres</a></li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container content">
-      <h1 class="title">Developers</h1>
-      <div class="developers-container">
-        <% developers.forEach(developer => { %>
-          <div class="developer-card">
-            <p class="developer-name"><%= developer.name %></p>
-            <p class="developer-bio"><%= developer.bio %></p>
-          </div>
+        <h1 class="title">Developers</h1>
+        <% developers.forEach(dev => { %>
+            <div class="game-card">
+                <p class="game-title"><%= dev.name %></p>
+                <p class="game-details">Bio: <%= dev.bio %></p>
+                <p class="game-details">Games Developed: <%= dev.games_developed %></p>
+                <p class="game-details">Games: <%= dev.games %></p>
+            </div>
         <% }); %>
-      </div>
-      
     </div>
 
     <footer class="footer">
-      <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
+        <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
-  </body>
+</body>
 </html>
