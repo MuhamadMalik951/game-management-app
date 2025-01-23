@@ -2,7 +2,7 @@ import query from '../db/db.js';
 const getAllGames = async () => {
   try {
     const result = await query(
-      'SELECT games.id, games.name AS name, developers.name AS developer, genres.name AS genre FROM games JOIN developers ON developers.id = games.developer_id JOIN genres ON games.genre_id = genres.id'
+      'SELECT games.id, games.name AS name, developers.name AS developer, genres.name AS genre FROM games RIGHT JOIN developers ON developers.id = games.developer_id JOIN genres ON games.genre_id = genres.id '
     );
     return result.rows;
   } catch (error) {
@@ -27,7 +27,6 @@ export const addGames = async (name, developer, genre) => {
       `INSERT INTO games (name, developer_id, genre_id) VALUES ($1, $2, $3)`,
       values
     );
-    console.log(values);
     console.log('Game Added Successfully!');
     return result.rows;
   } catch (error) {
@@ -56,7 +55,7 @@ export const getGame = async (id) => {
       `SELECT games.name AS name, developers.name AS developer, genres.name AS genre FROM games JOIN developers ON games.developer_id = developers.id JOIN genres ON games.genre_id = genres.id WHERE games.id = $1`,
       values
     );
-    console.log(result.rows);
+    // console.log(result.rows);
     return result.rows;
   } catch (error) {
     console.error(error);
