@@ -64,9 +64,7 @@ const genres = await pool.query(
 const games = await pool.query(
   `SELECT genres.name AS name FROM genres LEFT JOIN games on genres.id = games.genre_id GROUP BY genres.id`
 );
-const gamesss = await pool.query(
-  `SELECT * FROM games`
-);
+const gamesss = await pool.query(`SELECT * FROM games`);
 // console.log(gamesss.rows)
 const gamess =
   await pool.query(`SELECT games.name AS name, developers.name AS developer, genres.name AS genre FROM games JOIN developers ON developers.id = games.developer_id
@@ -76,13 +74,20 @@ const gamess =
 const dev = await pool.query(
   `SELECT developers.name AS name, developers.bio, COUNT(games.name) AS games_developed ,STRING_AGG(games.name, ', ') AS games FROM developers JOIN games ON developers.id = games.developer_id GROUP BY games.developer_id, developers.name, developers.bio`
 );
-const devs = await pool.query(`SELECT * FROM developers`)
-// console.log(devs.rows)
+const devs = await pool.query(`SELECT * FROM genres`);
+// console.log(devs.rows);
 const queryRows = await pool.query(
   `SELECT games.name AS game_title, developers.name AS developer_name FROM games JOIN developers ON developers.id = 2`
 );
 // console.log(queryRows.rows);
-
+const developer = await pool.query(
+  `SELECT developers.name AS name, STRING_AGG(games.name, ', ') AS games  FROM developers LEFT JOIN games ON developers.id = games.developer_id WHERE developers.id = 1 GROUP BY developers.id `
+);
+const game = await pool.query(
+  `SELECT genres.name, games.name AS game , COUNT(games.name) AS games FROM genres LEFT JOIN games ON genres.id = games.genre_id WHERE genres.id = 3 GROUP BY genres.id, games.name`
+);
+console.log(developer.rows);
+// console.log(game.rows);
 // pool.query(`DROP TABLE games`);
 const query = (query, params) => pool.query(query, params);
 export default query;

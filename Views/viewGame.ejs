@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>Developer Details</title>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1 class="title">John Smith</h1>
-            <div class="action-buttons">
-                <button class="edit-button">Edit Developer</button>
-                <button class="delete-button">Delete Developer</button>
-            </div>
+    <title><%= game.title %> - Game Details</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">Game Management</a>
+        <ul class="navbar-links">
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/developers">Developers</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/genres">Genres</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container content">
+      <div class="header">
+        <h1 class="title"><%= game.name %></h1>
+        <div class="action-buttons">
+          <button class="edit-button">Edit Game</button>
+          <button class="delete-button">Delete Game</button>
         </div>
+      </div>
 
-        <div class="section">
-            <h2 class="section-title">Quick Details</h2>
-            <div class="details-grid">
-                <div class="label">Specialization:</div>
-                <div class="value">Game Development</div>
-
-                <div class="label">Years of Experience:</div>
-                <div class="value">10</div>
-
-                <div class="label">Games Developed:</div>
-                <div class="value">Super Game, Awesome Adventure, Epic Quest</div>
-            </div>
+      <div class="section">
+        <h2 class="section-title">Quick Details</h2>
+        <div class="details-grid">
+          <div class="games-developed">
+            <div class="label">Genre:</div>
+            <div class="value"><%= game.genre %></div>
+          </div>
+          <div class="games-developed">
+            <div class="label">Developer:</div>
+            <div class="value"><%= game.developer ? game.developer : 'Unknown' %></div>
+          </div>
         </div>
+      </div>
 
-        <div class="section">
-            <h2 class="section-title">Description</h2>
-            <p class="description">
-                Senior game developer with extensive experience in creating immersive gaming experiences. 
-                Specializes in Unity and Unreal Engine development with a focus on performance optimization 
-                and engaging gameplay mechanics.
-            </p>
-        </div>
+      <div class="section">
+        <h2 class="section-title">Description</h2>
+        <p class="description"><%= game.description %></p>
+      </div>
 
-        <div class="section">
-            <h2 class="section-title">Additional Information</h2>
-            <p class="additional-info">
-                This developer is part of our game development management system.
-            </p>
-        </div>
+      <div class="section">
+        <h2 class="section-title">Additional Information</h2>
+        <p class="additional-info">
+          This game is managed as part of our game management system.
+        </p>
+      </div>
     </div>
-</body>
+    <footer class="footer">
+      <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
+    </footer>
+  </body>
 </html>

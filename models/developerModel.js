@@ -34,4 +34,19 @@ export const addDeveloper = async (name, bio) => {
   }
 };
 
+export const getDeveloper = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(
+      `SELECT developers.name AS name, STRING_AGG(games.name, ', ') AS games, developers.bio AS bio  FROM developers LEFT JOIN games ON developers.id = games.developer_id WHERE developers.id = $1 GROUP BY developers.id `,
+      values
+    );
+    console.log(result.rows);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// export const deleteDeve
 export default getAllDevelopers;

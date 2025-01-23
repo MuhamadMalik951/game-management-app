@@ -57,4 +57,18 @@ export const updateGame = async (name, developer_id, genre_id) => {
   }
 };
 
+export const getGame = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(
+      `SELECT games.name AS name, developers.name AS developer, genres.name AS genre FROM games JOIN developers ON games.developer_id = developers.id JOIN genres ON games.genre_id = genres.id WHERE games.id = $1`,
+      values
+    );
+    console.log(result.rows);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export default getAllGames;

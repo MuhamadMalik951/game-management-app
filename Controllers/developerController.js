@@ -1,4 +1,7 @@
-import getAllDevelopers, { addDeveloper } from '../models/developerModel.js';
+import getAllDevelopers, {
+  addDeveloper,
+  getDeveloper,
+} from '../models/developerModel.js';
 const renderDeveloper = async (req, res) => {
   const developers = await getAllDevelopers();
   res.render('developer', { developers: developers });
@@ -9,7 +12,9 @@ export const renderCreateDeveloperForm = (req, res) => {
 };
 
 export const viewDeveloper = async (req, res) => {
-  res.render('viewDeveloper');
+  const id = req.params.id;
+  const dev = await getDeveloper(id);
+  res.render('viewDeveloper', { developer: dev[0] });
 };
 
 export const createDeveloper = async (req, res) => {

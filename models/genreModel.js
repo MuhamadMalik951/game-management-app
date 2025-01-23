@@ -37,4 +37,18 @@ export const addGenre = async (name, description) => {
   }
 };
 
+export const getGenre = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(
+      `SELECT genres.name, genres.description AS description, COUNT(games.name) AS totalGames, STRING_AGG(games.name, ', ') AS games FROM genres LEFT JOIN games ON genres.id = games.genre_id WHERE genres.id = $1 GROUP BY genres.name, genres.description`,
+      values
+    );
+    console.log(result.rows);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export default getAllGenres;
