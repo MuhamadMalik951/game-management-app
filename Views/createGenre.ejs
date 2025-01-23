@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Genre</title>
-  <link rel="stylesheet" href="/styles.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Genre - Game Management</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/">Game Management</a>
-      <ul class="navbar-links">
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/developers">Developers</a></li>
-        <li><a href="/games">Games</a></li>
-        <li><a href="/genres">Genres</a></li>
-      </ul>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">Game Management</a>
+            <ul class="navbar-links">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/developers">Developers</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/genres">Genres</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container content">
+      <form action="/genres/create" method="POST" class="form">
+          <h1>Create a New Genre</h1>
+            <div class="form-group">
+                <label for="name">Genre Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter genre name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Enter genre description" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Create Genre</button>
+              <a href="/" class="btn-secondary">Cancel</a>
+          </div>
+        </form>
     </div>
-  </nav>
 
-  <div class="container content">
-    <h1>Create a New Genre</h1>
-    <form action="/genres/create" method="POST" class="form">
-      <div class="form-group">
-        <label for="name">Genre Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter genre name" required>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" rows="4" placeholder="Enter genre description" required></textarea>
-      </div>
-      <button type="submit" class="btn-primary">Create Genre</button>
-    </form>
-  </div>
-
-  <footer class="footer">
-    <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
-  </footer>
+    <footer class="footer">
+        <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
+    </footer>
 </body>
 </html>

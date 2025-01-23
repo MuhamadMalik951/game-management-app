@@ -12,7 +12,9 @@ export const renderCreateGameForm = async (req, res) => {
   const developers = await getAllDevelopers();
   res.render('createGame', { genres: genres, developers: developers });
 };
-
+export const viewGame = async (req, res) => {
+  res.render('viewGame');
+};
 export const createGame = async (req, res) => {
   const name = req.body.name;
   const developer = parseInt(req.body.developers);

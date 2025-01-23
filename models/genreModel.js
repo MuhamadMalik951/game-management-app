@@ -36,4 +36,5 @@ export const addGenre = async (name, description) => {
     console.error(error);
   }
 };
+
 export default getAllGenres;

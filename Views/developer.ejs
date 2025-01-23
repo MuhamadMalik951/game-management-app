@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games</title>
-    <link rel="stylesheet" href="/styles.css">
-    <style>
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .game-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        .game-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .game-details {
-            margin: 10px 0;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#">Game Management</a>
-            <ul class="navbar-links">
-                <li><a href="/">Dashboard</a></li>
-                <li><a href="/developers">Developers</a></li>
-                <li><a href="/games">Games</a></li>
-                <li><a href="/genres">Genres</a></li>
-            </ul>
-        </div>
+      <div class="container">
+        <a class="navbar-brand" href="/">Game Management</a>
+        <ul class="navbar-links">
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/developers">Developers</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/genres">Genres</a></li>
+        </ul>
+      </div>
     </nav>
-
     <div class="container content">
+      <div class="header">
+        <h1 class="title">Developers</h1>
+        <a href="/developers/create">
+          <button class="add-button">Add New Developer</button>
+        </a>
+      </div>
+
+      <input
+        type="text"
+        class="search-box"
+        placeholder="Search developers..."
+      />
+      <table class="developers-table">
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>BIO</th>
+            <th>GAMES</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% developers.forEach(developer => { %>
+          <tr>
+            <td><%= developer.name %></td>
+            <td class="bio"><%= developer.bio %></td>
+            <td class="books-count"><%= developer.games ? developer.games : 'None'%></td>
+            <td class="action-links">
+              <a href="/developers/<%= developer.id %>" class="view-link">View</a>
+              <a href="#" class="edit-link">Edit</a>
+              <a href="#" class="delete-link">Delete</a>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+    <!-- <div class="container content">
         <h1 class="title">Developers</h1>
         <% developers.forEach(dev => { %>
             <div class="game-card">
@@ -50,10 +66,10 @@
                 <p class="game-details">Games: <%= dev.games ? dev.games : 'None' %></p>
             </div>
         <% }); %>
-    </div>
+    </div> -->
 
     <footer class="footer">
-        <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
+      <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
-</body>
+  </body>
 </html>

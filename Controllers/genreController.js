@@ -9,6 +9,10 @@ export const renderCreateGenreForm = (req, res) => {
   res.render('createGenre');
 };
 
+export const viewGenre = async (req, res) => {
+  res.render('viewGenre');
+};
+
 export const createGenre = async (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
