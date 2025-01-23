@@ -26,8 +26,15 @@
           <button class="add-button">Add New Genre</button>
         </a>
       </div>
+      
+      <input
+        type="text"
+        class="search-box"
+        id="search-box"
+        placeholder="Search genres..."
+        oninput="filterGenres()"
+      />
 
-      <input type="text" class="search-box" placeholder="Search genres..." />
       <table class="developers-table">
         <thead>
           <tr>
@@ -37,16 +44,16 @@
             <th>ACTIONS</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="genre-list">
           <% genres.forEach(genre => { %>
           <tr>
-            <td><%= genre.name %></td>
-            <td><%= genre.description%></td>
-            <td class="details"><%= genre.games ? genre.games : 'None' %></td>
+            <td class="genre-name"><%= genre.name %></td>
+            <td class="genre-description"><%= genre.description %></td>
+            <td class="genre-games"><%= genre.games ? genre.games : 'None' %></td>
             <td class="action-links">
               <a href="/genres/<%= genre.id %>" class="view-link">View</a>
               <a href="#" class="edit-link">Edit</a>
-              <form action="genres/<%=genre.id  %>/delete" method="POST">
+              <form action="genres/<%=genre.id%>/delete" method="POST">
                 <button type="submit" class="delete-link">Delete</button>
               </form>
             </td>
@@ -59,5 +66,27 @@
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
+
+    <script>
+      function filterGenres() {
+        const searchInput = document.getElementById("search-box").value.toLowerCase(); 
+        const rows = document.querySelectorAll("#genre-list tr"); 
+
+        rows.forEach((row) => {
+          const genreName = row.querySelector(".genre-name").textContent.toLowerCase();
+          const genreDescription = row.querySelector(".genre-description").textContent.toLowerCase();
+          const genreGames = row.querySelector(".genre-games").textContent.toLowerCase();
+          if (
+            genreName.includes(searchInput) ||
+            genreDescription.includes(searchInput) ||
+            genreGames.includes(searchInput)
+          ) {
+            row.style.display = ""; 
+          } else {
+            row.style.display = "none"; 
+          }
+        });
+      }
+    </script>
   </body>
 </html>

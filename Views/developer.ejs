@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Games</title>
+    <title>Developers</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -26,11 +26,15 @@
         </a>
       </div>
 
+
       <input
         type="text"
         class="search-box"
+        id="search-box"
         placeholder="Search developers..."
+        oninput="filterDevelopers()"
       />
+
       <table class="developers-table">
         <thead>
           <tr>
@@ -40,23 +44,16 @@
             <th class="actions">ACTIONS</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="developer-list">
           <% developers.forEach(developer => { %>
           <tr>
-            <td><%= developer.name %></td>
-            <td class="bio"><%= developer.bio %></td>
-            <td class="books-count">
-              <%= developer.games ? developer.games : 'None'%>
-            </td>
+            <td class="developer-name"><%= developer.name %></td>
+            <td class="developer-bio"><%= developer.bio %></td>
+            <td class="developer-games"><%= developer.games ? developer.games : 'None' %></td>
             <td class="action-links">
-              <a href="/developers/<%= developer.id %>" class="view-link"
-                >View</a
-              >
+              <a href="/developers/<%= developer.id %>" class="view-link">View</a>
               <a href="#" class="edit-link">Edit</a>
-              <form
-                action="developers/<%=developer.id  %>/delete"
-                method="POST"
-              >
+              <form action="developers/<%= developer.id %>/delete" method="POST">
                 <button type="submit" class="delete-link">Delete</button>
               </form>
             </td>
@@ -68,5 +65,28 @@
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
+
+    <script>
+      function filterDevelopers() {
+        const searchInput = document.getElementById("search-box").value.toLowerCase(); 
+        const rows = document.querySelectorAll("#developer-list tr"); 
+
+        rows.forEach((row) => {
+          const developerName = row.querySelector(".developer-name").textContent.toLowerCase();
+          const developerBio = row.querySelector(".developer-bio").textContent.toLowerCase();
+          const developerGames = row.querySelector(".developer-games").textContent.toLowerCase();
+
+          if (
+            developerName.includes(searchInput) ||
+            developerBio.includes(searchInput) ||
+            developerGames.includes(searchInput)
+          ) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -27,7 +27,14 @@
         </a>
       </div>
 
-      <input type="text" class="search-box" placeholder="Search games..." />
+      <input
+        type="text"
+        class="search-box"
+        id="search-box"
+        placeholder="Search games..."
+        oninput="filterGames()"
+      />
+
       <table class="developers-table">
         <thead>
           <tr>
@@ -37,12 +44,12 @@
             <th>ACTIONS</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="game-list">
           <% games.forEach(game => { %>
           <tr>
-            <td><%= game.name %></td>
-            <td class="bio"><%= game.developer %></td>
-            <td class="books-count"><%= game.genre %></td>
+            <td class="game-name"><%= game.name %></td>
+            <td class="game-developer"><%= game.developer %></td>
+            <td class="game-genre"><%= game.genre %></td>
             <td class="action-links">
               <a href="/games/<%= game.id %>" class="view-link">View</a>
               <a href="#" class="edit-link">Edit</a>
@@ -59,5 +66,30 @@
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>
+
+    <script>
+      function filterGames() {
+        const searchInput = document.getElementById("search-box").value.toLowerCase(); 
+        const rows = document.querySelectorAll("#game-list tr"); 
+
+        rows.forEach((row) => {
+
+          const gameName = row.querySelector(".game-name").textContent.toLowerCase();
+          const gameDeveloper = row.querySelector(".game-developer").textContent.toLowerCase();
+          const gameGenre = row.querySelector(".game-genre").textContent.toLowerCase();
+
+          
+          if (
+            gameName.includes(searchInput) ||
+            gameDeveloper.includes(searchInput) ||
+            gameGenre.includes(searchInput)
+          ) {
+            row.style.display = ""; 
+          } else {
+            row.style.display = "none"; 
+          }
+        });
+      }
+    </script>
   </body>
 </html>
