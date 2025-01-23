@@ -37,7 +37,7 @@
             <th>NAME</th>
             <th>BIO</th>
             <th>GAMES</th>
-            <th>ACTIONS</th>
+            <th class="actions">ACTIONS</th>
           </tr>
         </thead>
         <tbody>
@@ -45,29 +45,26 @@
           <tr>
             <td><%= developer.name %></td>
             <td class="bio"><%= developer.bio %></td>
-            <td class="books-count"><%= developer.games ? developer.games : 'None'%></td>
+            <td class="books-count">
+              <%= developer.games ? developer.games : 'None'%>
+            </td>
             <td class="action-links">
-              <a href="/developers/<%= developer.id %>" class="view-link">View</a>
+              <a href="/developers/<%= developer.id %>" class="view-link"
+                >View</a
+              >
               <a href="#" class="edit-link">Edit</a>
-              <a href="#" class="delete-link">Delete</a>
+              <form
+                action="developers/<%=developer.id  %>/delete"
+                method="POST"
+              >
+                <button type="submit" class="delete-link">Delete</button>
+              </form>
             </td>
           </tr>
           <% }); %>
         </tbody>
       </table>
     </div>
-    <!-- <div class="container content">
-        <h1 class="title">Developers</h1>
-        <% developers.forEach(dev => { %>
-            <div class="game-card">
-                <p class="game-title"><%= dev.name %></p>
-                <p class="game-details">Bio: <%= dev.bio %></p>
-                <p class="game-details">Games Developed: <%= dev.games_developed %></p>
-                <p class="game-details">Games: <%= dev.games ? dev.games : 'None' %></p>
-            </div>
-        <% }); %>
-    </div> -->
-
     <footer class="footer">
       <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
     </footer>

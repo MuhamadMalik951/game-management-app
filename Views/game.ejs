@@ -40,14 +40,15 @@
         <tbody>
           <% games.forEach(game => { %>
           <tr>
-           
             <td><%= game.name %></td>
             <td class="bio"><%= game.developer %></td>
             <td class="books-count"><%= game.genre %></td>
             <td class="action-links">
               <a href="/games/<%= game.id %>" class="view-link">View</a>
               <a href="#" class="edit-link">Edit</a>
-              <a href="#" class="delete-link">Delete</a>
+              <form action="games/<%=game.id  %>/delete" method="POST">
+                <button type="submit" class="delete-link">Delete</button>
+              </form>
             </td>
           </tr>
           <% }); %>

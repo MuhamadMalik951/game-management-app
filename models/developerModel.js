@@ -48,5 +48,13 @@ export const getDeveloper = async (id) => {
   }
 };
 
-// export const deleteDeve
+export const removeDeveloper = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(`DELETE FROM developers WHERE id = $1`, values);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
 export default getAllDevelopers;

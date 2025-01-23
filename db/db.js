@@ -86,7 +86,6 @@ const developer = await pool.query(
 const game = await pool.query(
   `SELECT genres.name, games.name AS game , COUNT(games.name) AS games FROM genres LEFT JOIN games ON genres.id = games.genre_id WHERE genres.id = 3 GROUP BY genres.id, games.name`
 );
-console.log(developer.rows);
 // console.log(game.rows);
 // pool.query(`DROP TABLE games`);
 const query = (query, params) => pool.query(query, params);

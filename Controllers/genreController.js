@@ -1,4 +1,8 @@
-import getAllGenres, { addGenre, getGenre } from '../models/genreModel.js';
+import getAllGenres, {
+  addGenre,
+  getGenre,
+  removeGenre,
+} from '../models/genreModel.js';
 
 const renderGenres = async (req, res) => {
   const genres = await getAllGenres();
@@ -11,7 +15,7 @@ export const renderCreateGenreForm = (req, res) => {
 
 export const viewGenre = async (req, res) => {
   const id = req.params.id;
-  const genre= await getGenre(id);
+  const genre = await getGenre(id);
   res.render('viewGenre', { genre: genre[0] });
 };
 
@@ -21,4 +25,12 @@ export const createGenre = async (req, res) => {
   await addGenre(name, description);
   res.redirect('/genres');
 };
+
+export const deleteGenre = async (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  await removeGenre(id);
+  res.redirect('/genres');
+};
+
 export default renderGenres;

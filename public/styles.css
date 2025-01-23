@@ -285,7 +285,7 @@ textarea {
 
 .search-box {
   width: 100%;
-  max-width: 300px;
+  /* max-width: ; */
   padding: 0.5rem;
   border: 1px solid #e5e7eb;
   border-radius: 0.375rem;
@@ -320,22 +320,37 @@ textarea {
   border-bottom: none;
 }
 
-.action-links a {
-  text-decoration: none;
-  margin-right: 1rem;
+.action-links a .delete-link {
+  /* text-decoration: none; */
+  margin-left: 1rem;
   font-size: 0.875rem;
+  cursor: pointer;
 }
-
+.action-links {
+  /* background-color: rgba(255, 0, 0, 0.274); */
+  /* display: flex; */
+}
 .view-link {
+  width: 2rem;
+  margin-left: 0.5rem;
+
   color: #3b82f6;
 }
 
 .edit-link {
   color: #10b981;
+  width: 2rem;
+  margin-left: 0.5rem;
+
 }
 
 .delete-link {
   color: #ef4444;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 0.5rem;
+
 }
 
 .books-count,
@@ -345,7 +360,7 @@ textarea {
 }
 
 .bio {
-  max-width: 400px;
+  max-width: 200px;
 }
 
 .stats-cards {

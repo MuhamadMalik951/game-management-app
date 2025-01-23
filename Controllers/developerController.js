@@ -1,6 +1,7 @@
 import getAllDevelopers, {
   addDeveloper,
   getDeveloper,
+  removeDeveloper,
 } from '../models/developerModel.js';
 const renderDeveloper = async (req, res) => {
   const developers = await getAllDevelopers();
@@ -21,6 +22,13 @@ export const createDeveloper = async (req, res) => {
   const name = req.body.name;
   const bio = req.body.bio;
   await addDeveloper(name, bio);
+  res.redirect('/developers');
+};
+
+export const deleteDeveloper = async (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  await removeDeveloper(id);
   res.redirect('/developers');
 };
 

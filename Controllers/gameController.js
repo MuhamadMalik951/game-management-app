@@ -1,5 +1,5 @@
 import getAllDevelopers from '../models/developerModel.js';
-import getAllGames, { addGames, getGame } from '../models/gameModel.js';
+import getAllGames, { addGames, getGame, removeGame } from '../models/gameModel.js';
 import getAllGenres from '../models/genreModel.js';
 
 const renderGame = async (req, res) => {
@@ -27,4 +27,9 @@ export const createGame = async (req, res) => {
   res.redirect('/games');
 };
 
+export const deleteGame = async (req, res) => {
+  const id = req.params.id;
+  await removeGame(id);
+  res.redirect('/games');
+};
 export default renderGame;

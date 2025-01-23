@@ -51,4 +51,14 @@ export const getGenre = async (id) => {
   }
 };
 
+export const removeGenre = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(`DELETE FROM genres WHERE id = $1`, values);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export default getAllGenres;

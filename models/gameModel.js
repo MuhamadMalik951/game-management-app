@@ -35,14 +35,6 @@ export const addGames = async (name, developer, genre) => {
   }
 };
 
-export const deleteGame = async (id) => {
-  try {
-    const values = [id];
-    const result = await query(`DELETE FROM games WHERE id = $1`, values);
-  } catch (error) {
-    console.error(error);
-  }
-};
 export const updateGame = async (name, developer_id, genre_id) => {
   try {
     const values = [name, developer_id, genre_id, id];
@@ -65,6 +57,16 @@ export const getGame = async (id) => {
       values
     );
     console.log(result.rows);
+    return result.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const removeGame = async (id) => {
+  const values = [id];
+  try {
+    const result = await query(`DELETE FROM games WHERE id = $1`, values);
     return result.rows;
   } catch (error) {
     console.error(error);
