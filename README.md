@@ -2,6 +2,8 @@
 
 A web application to manage games, developers, genres, and dashboards using Node.js and Express, with EJS as the templating engine.
 
+Live Url: https://game-management-app-production.up.railway.app/
+
 ## Features
 
 - **Dashboard:** View a summary of all games, developers, and genres.
