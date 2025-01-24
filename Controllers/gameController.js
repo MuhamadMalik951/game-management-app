@@ -10,7 +10,7 @@ const renderGame = async (req, res) => {
 export const renderCreateGameForm = async (req, res) => {
   const genres = await getAllGenres();
   const developers = await getAllDevelopers();
-  res.render('createGame', { genres: genres, developers: developers });
+  res.render('CreateGame', { genres: genres, developers: developers });
 };
 
 export const viewGame = async (req, res) => {

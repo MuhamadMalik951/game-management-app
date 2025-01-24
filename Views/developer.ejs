@@ -52,7 +52,6 @@
             <td class="developer-games"><%= developer.games ? developer.games : 'None' %></td>
             <td class="action-links">
               <a href="/developers/<%= developer.id %>" class="view-link">View</a>
-              <a href="#" class="edit-link">Edit</a>
               <form action="developers/<%= developer.id %>/delete" method="POST">
                 <button type="submit" class="delete-link">Delete</button>
               </form>
