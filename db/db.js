@@ -74,7 +74,7 @@ const gamess =
 const dev = await pool.query(
   `SELECT developers.name AS name, developers.bio, COUNT(games.name) AS games_developed ,STRING_AGG(games.name, ', ') AS games FROM developers JOIN games ON developers.id = games.developer_id GROUP BY games.developer_id, developers.name, developers.bio`
 );
-const devs = await pool.query(`SELECT * FROM games`);
+const devs = await pool.query(`SELECT * FROM genres`);
 console.log(devs.rows);
 const queryRows = await pool.query(
   `SELECT games.name AS game_title, developers.name AS developer_name FROM games JOIN developers ON developers.id = 2`

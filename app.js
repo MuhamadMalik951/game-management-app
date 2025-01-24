@@ -14,7 +14,7 @@ const assetsPath = join(__dirname, 'public');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(assetsPath));
 
-app.set('views', join(__dirname, 'views'));
+app.set('views', join(__dirname, 'Views'));
 app.set('view engine', 'ejs');
 
 app.use('/', dashboardRouter);
