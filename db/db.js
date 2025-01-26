@@ -13,7 +13,7 @@ const pool = new Pool({
 
 // pool.query(`CREATE DATABASE auth`)
 // await pool.query(`CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(255), password VARCHAR(255))`)
-const users =  await pool.query(`SELECT * FROM users`)
+// const users =  await pool.query(`SELECT * FROM users`)
 // console.log(users.rows)
 // pool.query(`CREATE TABLE games(
 //     id SERIAL PRIMARY KEY,
@@ -55,7 +55,7 @@ const users =  await pool.query(`SELECT * FROM users`)
 
 // const insertQuery = `DROP TABLE genres`;
 // const insertQuery = `UPDATE developers SET bio = 'Talha is a backend developer with expertise in Node.js and Python.' WHERE id = 3;
-const insertQuery = `UPDATE games SET developer_id = 1 WHERE genre_id = 8`;
+// const insertQuery = `UPDATE games SET developer_id = 1 WHERE genre_id = 8`;
 // const insertQuery = `ALTER TABLE games DROP COLUMN genre_id `;
 // const insertQuery = `ALTER TABLE games ADD COLUMN genre_id INT`;
 // await pool.query(insertQuery);
