@@ -11,7 +11,10 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-// pool.query(`CREATE DATABASE GAMES`)
+// pool.query(`CREATE DATABASE auth`)
+// await pool.query(`CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(255), password VARCHAR(255))`)
+const users =  await pool.query(`SELECT * FROM users`)
+// console.log(users.rows)
 // pool.query(`CREATE TABLE games(
 //     id SERIAL PRIMARY KEY,
 //     name VARCHAR(255),
@@ -75,7 +78,7 @@ const dev = await pool.query(
   `SELECT developers.name AS name, developers.bio, COUNT(games.name) AS games_developed ,STRING_AGG(games.name, ', ') AS games FROM developers JOIN games ON developers.id = games.developer_id GROUP BY games.developer_id, developers.name, developers.bio`
 );
 const devs = await pool.query(`SELECT * FROM genres`);
-console.log(devs.rows);
+// console.log(devs.rows);
 const queryRows = await pool.query(
   `SELECT games.name AS game_title, developers.name AS developer_name FROM games JOIN developers ON developers.id = 2`
 );
@@ -87,7 +90,7 @@ const game = await pool.query(
   `SELECT genres.id, genres.name AS genre, STRING_AGG(games.name, ', ') AS games from genres LEFT JOIN games ON games.genre_id = genres.id WHERE genres.id = 1 GROUP BY genres.id `
 );
 
-console.log(game.rows);
+// console.log(game.rows);
 // pool.query(`DROP TABLE games`);
 const query = (query, params) => pool.query(query, params);
 export default query;

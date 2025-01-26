@@ -3,22 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/dashbaord.css" />
     <title>Game Management</title>
- 
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <a class="navbar-brand" href="#">Game Management</a>
-        <ul class="navbar-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/developers">Developers</a></li>
-          <li><a href="/games">Games</a></li>
-          <li><a href="/genres">Genres</a></li>
-        </ul>
-      </div>
-    </nav>
+    <%- include('header') %>
 
     <div class="container">
       <header class="dashboard-header">
@@ -100,8 +89,6 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
-    </footer>
+    <%- include('footer') %>
   </body>
 </html>

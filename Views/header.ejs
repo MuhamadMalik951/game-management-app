@@ -1,0 +1,215 @@
+<style>
+  /* Navbar/Header Styles - Enhanced for mobile */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md) 0;
+    width: 100%;
+  }
+
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    z-index: 2;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+  }
+
+  .navbar-links a:hover {
+    color: var(--primary-color);
+    background-color: var(--background-color);
+  }
+
+  /* Mobile Header Enhancements */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: var(--spacing-sm) 0;
+    }
+
+    .navbar .container {
+      /* background-color: blue; */
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .flex{
+      background-color: white;
+      display: flex;
+      /* flex-direction: column; */
+
+    }
+    .navbar-links {
+      display: none; /* Hidden by default on mobile */
+      /* background-color: red; */
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--spacing-md);
+    }
+
+    .navbar-links.active {
+      display: flex; /* Shown when menu is active */
+    }
+
+    .navbar-links li {
+      width: 100%;
+    }
+
+    .navbar-links a {
+      display: block;
+      padding: 1rem;
+      border-radius: 0;
+      border-bottom: 1px solid var(--background-color);
+    }
+
+    .navbar-links a:hover {
+      background-color: var(--background-color);
+    }
+
+    /* Hamburger Menu Button */
+    .menu-button {
+      display: block;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 2;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-button.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-button.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+
+  /* Footer Styles */
+  .footer {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    color: var(--secondary-color);
+    margin-top: auto;
+    background-color: var(--card-background);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: var(--spacing-md) var(--spacing-sm);
+    }
+  }
+  .navbar-burger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .navbar-burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin-bottom: 5px;
+    background-color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-burger {
+      display: block;
+    }
+
+    .navbar-links {
+      display: none;
+    }
+
+    .navbar-links.is-active {
+      display: block;
+    }
+    .flex {
+    display: block;
+    justify-content: space-between;
+    width: 100%;
+  }
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+</style>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="flex">
+      <a class="navbar-brand" href="#">Game Management</a>
+      <button class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/developers">Developers</a></li>
+      <li><a href="/games">Games</a></li>
+      <li><a href="/genres">Genres</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const navLinks = document.querySelector('.navbar-links');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      navLinks.classList.toggle('is-active');
+    });
+  });
+</script>

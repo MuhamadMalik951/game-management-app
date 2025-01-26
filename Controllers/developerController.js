@@ -12,10 +12,11 @@ const renderDeveloper = async (req, res) => {
 export const renderCreateDeveloperForm = (req, res) => {
   res.render('createDeveloper');
 };
-
+ 
 export const viewDeveloper = async (req, res) => {
   const id = req.params.id;
   const dev = await getDeveloper(id);
+  console.log(dev);
   res.render('viewDeveloper', { developer: dev[0] });
 };
 
@@ -39,7 +40,10 @@ export const deleteDeveloper = async (req, res) => {
     const games = result.rows[0].games;
     const message = `Cannot delete developer '${name}' because it is associated with games like ${games}. Please Update or Delete games associated with this developer.`;
     if (games) {
-      return res.render('errorMessage', { message: message , route: 'developers'});
+      return res.render('errorMessage', {
+        message: message,
+        route: 'developers',
+      });
     }
     await removeDeveloper(id);
     res.redirect('/developers');

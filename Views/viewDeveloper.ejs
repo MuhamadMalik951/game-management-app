@@ -7,22 +7,11 @@
     <title><%= developer.name %>'s Details</title>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <a class="navbar-brand" href="/">Game Management</a>
-        <ul class="navbar-links">
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/developers">Developers</a></li>
-          <li><a href="/games">Games</a></li>
-          <li><a href="/genres">Genres</a></li>
-        </ul>
-      </div>
-    </nav>
+    <%- include('header') %>
     <div class="container content">
       <div class="header">
         <h1 class="title"><%= developer.name %></h1>
-        <div class="action-buttons">
-        </div>
+        <div class="action-buttons"></div>
       </div>
 
       <div class="section">
@@ -50,8 +39,6 @@
         </p>
       </div>
     </div>
-    <footer class="footer">
-      <p>&copy; 2025 Game Management Dashboard. All rights reserved.</p>
-    </footer>
+    <%- include('footer') %>
   </body>
 </html>
